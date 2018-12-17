@@ -1,40 +1,28 @@
-{-# LANGUAGE FlexibleInstances, GADTs, GeneralizedNewtypeDeriving, MultiParamTypeClasses, OverloadedStrings, QuasiQuotes, TemplateHaskell, TypeFamilies, ViewPatterns #-}
-
 -- Make s2nushu.txt for Nushu Input Method
+-- Usage: stack runhaskell -- -Wall -Werror makeopencc.hs < data.csv > s2nushu.txt
 
-import Data.Foldable (for_)
+import Data.Foldable (traverse_)
 import Data.List (intersperse)
-import Data.Text (Text)
-import Data.Time.Clock (UTCTime)
-import Database.Persist.Sqlite
-import Database.Persist.TH
+import Data.List.Split (splitOn)
+import Data.MultiMap (MultiMap)
+import qualified Data.MultiMap as MM (assocs, empty, insert)
+import System.IO
 
-share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
-ServerUser
-  credsPlugin Text
-  credsIdent Text
-  name Text Maybe
-  isAdmin Bool
-  deriving Show
-NushuHanzi json
-  nushuChar Int
-  hanzi String
-  uploader ServerUserId
-  uploadTime UTCTime
-  validity Bool
-  UniqueNushuHanzi nushuChar hanzi
-  deriving Show
-|]
+insertOne :: Char -> MultiMap Char Char -> Char -> MultiMap Char Char
+insertOne ch m v = MM.insert v ch m
 
-type QueryRow = (Single String, Single String)
+getMap :: MultiMap Char Char -> String -> MultiMap Char Char
+getMap m x = foldl (insertOne colA) m colC
+ where
+  [[colA],_,colC,_] = splitOn "," x
 
-selectedToFile :: QueryRow -> String
-selectedToFile (Single hanzi,Single xs) = hanzi <> "\t" <> (intersperse ' ' $ fmap (toEnum . read) $ words $ xs)
+pp :: (Char, String) -> String
+pp (k, v) = k : '\t' : intersperse ' ' v
 
 main :: IO ()
 main = do
-  res <- runSqlite "data.db" $ rawSql "select hanzi, group_concat(nushu_char, ' ') \
-    \from nushu_hanzi \
-    \group by hanzi \
-    \order by nushu_char" []
-  for_ res $ putStrLn . selectedToFile
+  hSetEncoding stdin utf8_bom
+  ("女书字符,《字帖》序,对应汉字,江永方言代表发音":contents) <- fmap lines getContents
+  traverse_ (putStrLn . pp)
+    $ MM.assocs
+    $ foldl getMap MM.empty contents
