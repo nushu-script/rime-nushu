@@ -1,0 +1,16 @@
+{
+  "name": "Simplified Chinese Characters to Nushu",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "text",
+      "file": "s2nushu.txt"
+    }
+  },
+  "conversion_chain": [{
+    "dict": {
+      "type": "text",
+      "file": "s2nushu.txt"
+    }
+  }]
+}

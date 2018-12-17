@@ -1,0 +1,90 @@
+# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+  schema_id: unicode_nushu_romanization
+  name: "Unicode 女书拼音"
+  version: "20180506 V1.0.03m1"
+  author:
+    - chromezh
+  description: |
+    女书输入法，支持 Unicode 编码的 396 个女书字符。
+    使用女书拼音输入女书。
+
+switches:
+  - name: ascii_mode
+    states: [ 女书, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: ascii_punct
+    states: [ ，。, ，． ]
+
+engine:
+  processors:
+    - ascii_composer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+  filters:
+    - uniquifier
+
+speller:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  delimiter: " '"
+  algebra:
+    - "xform/^tc([aiueoyw])/j$1/"                # tc -> j
+    - "xform/^tch([aiueoyw])/q$1/"               # tch -> q
+    - "xform/^c([aiueoyw])/x$1/"                 # c -> x
+    - "xform/^ts([aiueoyw])/z$1/"                # ts -> z
+    - "xform/^tsh([aiueoyw])/c$1/"               # tsh -> c
+    - "xform/^p([aiueoyw])/b$1/"                 # p -> b
+    - "xform/^ph([aiueoyw])/p$1/"                # ph -> p
+    - "xform/^t([aiueoyw])/d$1/"                 # t -> d
+    - "xform/^th([aiueoyw])/t$1/"                # th -> t
+    - "xform/^k([aiueoyw])/g$1/"                 # k -> g
+    - "xform/^kh([aiueoyw])/k$1/"                # kh -> k
+    - "abbrev/^([a-z]).+$/$1/"                   # 首字母簡拼
+    - "abbrev/^(ng|nj).+$/$1/"                   # 双字母 ng 与 nj 簡拼
+    - "derive/^([a-z]+)[1-5]{1,2}$/$1/"          # 兼容無聲調拼音
+
+translator:
+  dictionary: unicode_nushu_romanization
+  spelling_hints: 20
+  comment_format:
+    - "xform/(^| )tc([aiueoyw])/$1j$2/"          # tc -> j
+    - "xform/(^| )tch([aiueoyw])/$1q$2/"         # tch -> q
+    - "xform/(^| )c([aiueoyw])/$1x$2/"           # c -> x
+    - "xform/(^| )ts([aiueoyw])/$1z$2/"          # ts -> z
+    - "xform/(^| )tsh([aiueoyw])/$1c$2/"         # tsh -> c
+    - "xform/(^| )p([aiueoyw])/$1b$2/"           # p -> b
+    - "xform/(^| )ph([aiueoyw])/$1p$2/"          # ph -> p
+    - "xform/(^| )t([aiueoyw])/$1d$2/"           # t -> d
+    - "xform/(^| )th([aiueoyw])/$1t$2/"          # th -> t
+    - "xform/(^| )k([aiueoyw])/$1g$2/"           # k -> g
+    - "xform/(^| )kh([aiueoyw])/$1k$2/"          # kh -> k
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+style:
+  font_face: "TH-Tshyn-P1"
+#  To enlarge the font size, enable the settings below:
+#  font_point: 26
+#  layout:
+#    candidate_spacing: 8

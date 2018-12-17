@@ -1,0 +1,115 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: luna_pinyin_nushu
+  name: "朙月拼音·Unicode 女书"
+  version: "20180506 V1.0.01m1"
+  author:
+    - chromezh
+  dependencies:
+    - unicode_nushu_romanization
+  description: |
+    女書輸入法，支持 Unicode 編碼的 396 個女書字符。
+    這是朙月拼音的女書輸出模式。使用普通話輸入，可以在漢字與女書字之間切換。
+    按下 ` 鍵，可以使用女書拼音輸入女書字符。
+    本方案依賴「Unicode 女書拼音」方案。
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: simplification
+    reset: 1
+  - name: nushu_convert
+    reset: 1
+    states: [ 汉字, 女书 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - affix_segmentor@unicode_nushu_romanization
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - script_translator@unicode_nushu_romanization
+  filters:
+    - simplifier
+    - uniquifier  # 此項不能與下一項顛倒，否則會將對應同一女書的不同漢字合併
+    - simplifier@nushu
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - erase/^xx$/
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+    - derive/^([nl])ve$/$1ue/
+    - derive/^([jqxy])u/$1v/
+    - derive/([dtngkhrzcs])o(u|ng)$/$1o/
+    - derive/ong$/on/
+
+translator:
+  dictionary: luna_pinyin
+  prism: luna_pinyin_nushu
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+unicode_nushu_romanization:
+  dictionary: unicode_nushu_romanization
+  spelling_hints: 20
+  prefix: "`"
+  suffix: ";"
+  tips: 『女书拼音』
+  tag: unicode_nushu_romanization
+
+simplifier:
+  import_preset: default
+  option_name: simplification
+
+nushu:
+  option_name: nushu_convert
+  opencc_config: s2nushu.json
+  tags: [ abc ]  # 設置對主翻譯器起作用
+  tips: all  # 簡化器打開的情況下，提示女書對應的漢字
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { when: always, accept: Control+Shift+4, toggle: nushu_convert }
+    - { when: always, accept: Control+Shift+dollar, toggle: nushu_convert }
+
+recognizer:
+  import_preset: default
+  patterns:
+    unicode_nushu_romanization: "`[a-z']*;?"  # press grave to enter nushu romanization input mode
+
+style:
+  font_face: "TH-Tshyn-P1"
+#  To enlarge the font size, enable the settings below:
+#  font_point: 26
+#  layout:
+#    candidate_spacing: 8
