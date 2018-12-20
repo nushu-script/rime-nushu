@@ -1,5 +1,5 @@
 -- Make s2nushu.txt for Nushu Input Method
--- Usage: stack runhaskell -- -Wall -Werror makeopencc.hs < data.csv > s2nushu.txt
+-- Usage: stack runhaskell -- -Wall -Werror makeopencc < data.csv > s2nushu.txt
 
 import Data.Foldable (traverse_)
 import Data.List (intersperse)
@@ -12,17 +12,17 @@ insertOne :: Char -> MultiMap Char Char -> Char -> MultiMap Char Char
 insertOne ch m v = MM.insert v ch m
 
 getMap :: MultiMap Char Char -> String -> MultiMap Char Char
-getMap m x = foldl (insertOne colA) m colC
- where
-  [[colA],_,colC,_] = splitOn "," x
+getMap m x = let [[colA],_,colC,_] = splitOn "," x in foldl (insertOne colA) m colC
 
 pp :: (Char, String) -> String
-pp (k, v) = k : '\t' : intersperse ' ' v
+pp (k,v) = k : '\t' : intersperse ' ' v
+
+makeOpenCC :: String -> IO ()
+makeOpenCC str =
+ let ("女书字符,《字帖》序,对应汉字,江永方言代表发音":contents) = lines str
+  in traverse_ (putStrLn . pp) $ MM.assocs $ foldl getMap MM.empty contents
 
 main :: IO ()
 main = do
   hSetEncoding stdin utf8_bom
-  ("女书字符,《字帖》序,对应汉字,江永方言代表发音":contents) <- fmap lines getContents
-  traverse_ (putStrLn . pp)
-    $ MM.assocs
-    $ foldl getMap MM.empty contents
+  makeOpenCC =<< getContents
