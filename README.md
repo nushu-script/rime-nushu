@@ -217,6 +217,8 @@
 
 　　RIME 可以在各种操作系统上使用，在 Windows 上称为「[小狼毫](https://github.com/rime/weasel)（Weasel）」，在 Linux 上有 [ibus-rime](https://github.com/rime/ibus-rime) 和 [fcitx-rime](https://github.com/fcitx/fcitx-rime)，在 macOS 上称为「[鼠须管](https://github.com/rime/squirrel)（Squirrel）」，在 Android 上称为「[同文输入法](https://github.com/osfans/trime)（trime）」，在 iOS 上称为 iRime。
 
+　　RIME 在各平台的安装方法可以参考 [输入法安装方法](https://kahaani.github.io/gatian/appendix2/index.html)。
+
 　　若在使用 RIME 的过程中有任何疑问，可在 QQ 群 77608640 中询问。
 
 ### 开放中文转换（openCC）
