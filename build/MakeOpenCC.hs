@@ -1,5 +1,6 @@
 -- Make s2nushu.txt for Nushu Input Method
 -- Usage: stack runhaskell --package split --package multimap -- -Wall -Werror MakeOpenCC.hs < data.csv > s2nushu.txt
+-- data.csv from https://nushuscript.org/unicode_nushu/data.csv
 
 import Data.Foldable (traverse_)
 import Data.List (intersperse)
