@@ -68,7 +68,7 @@ RIME 在 Windows 操作系统上称为「小狼毫」。若您使用的是 Windo
 
 ![](demo/win_weasel_addschema_4.png)
 
-待部署完成后，按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>`</kbd> 唤出菜单，选择「朙月拼音·Unicode 女书」，即可使用 Unicode 女书输入法。
+待部署完成后，按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>\`</kbd> 唤出菜单，选择「朙月拼音·Unicode 女书」，即可使用 Unicode 女书输入法。
 
 ![](demo/win_weasel_addschema_3.png)
 
@@ -88,7 +88,7 @@ RIME 在 Windows 操作系统上称为「小狼毫」。若您使用的是 Windo
 
 首先，将输入法切换到「小狼毫（TSF）」。
 
-按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>`</kbd> 唤出菜单，选择「朙月拼音·Unicode 女书」，即可通过普通话输入女书。
+按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>\`</kbd> 唤出菜单，选择「朙月拼音·Unicode 女书」，即可通过普通话输入女书。
 
 目前支持 1760 个汉字，其他汉字尚不能转换为对应的女书。
 
@@ -98,7 +98,7 @@ RIME 在 Windows 操作系统上称为「小狼毫」。若您使用的是 Windo
 
 首先，将输入法切换到「小狼毫（TSF）」。
 
-按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>`</kbd> 唤出菜单，选择「朙月拼音·Unicode 女书」。
+按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>\`</kbd> 唤出菜单，选择「朙月拼音·Unicode 女书」。
 
 按下 &#96; 键（在键盘的左上角）， 进入女书拼音输入模式。
 
@@ -108,7 +108,7 @@ RIME 在 Windows 操作系统上称为「小狼毫」。若您使用的是 Windo
 
 ![](demo/weasel_unicode_nushu0.png)
 
-另外，按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>`</kbd> 唤出菜单，选择「Unicode 女书拼音」，可以在不按 <kbd>`</kbd> 键的情况下，通过女书拼音输入女书。
+另外，按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>\`</kbd> 唤出菜单，选择「Unicode 女书拼音」，可以在不按 <kbd>\`</kbd> 键的情况下，通过女书拼音输入女书。
 
 ### 退出女书输入模式（只得到汉字）
 
@@ -116,7 +116,7 @@ RIME 在 Windows 操作系统上称为「小狼毫」。若您使用的是 Windo
 
 ![](demo/weasel_unicode_nushu2.png)
 
-可以按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>`</kbd> 唤出菜单，再按 4 选择「女书 -> 汉字」选项退出女书模式，也可以按 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd> 快捷键退出女书模式。
+可以按 <kbd>F4</kbd> 或 <kbd>Ctrl</kbd> + <kbd>\`</kbd> 唤出菜单，再按 4 选择「女书 -> 汉字」选项退出女书模式，也可以按 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd> 快捷键退出女书模式。
 
 ![](demo/weasel_unicode_nushu4.png)
 
