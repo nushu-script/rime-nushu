@@ -5,10 +5,10 @@
 schema:
   schema_id: unicode_nushu_romanization
   name: "Unicode 女书拼音"
-  version: "20180506 V1.0.03m1"
+  version: "2.0.1-m4"
   author:
-    - chromezh
-  description: |
+    - sgalal <ayaka@mail.shn.hk>
+  description: |-
     女书输入法，支持 Unicode 编码的 396 个女书字符。
     使用女书拼音输入女书。
 
@@ -83,7 +83,7 @@ key_binder:
   import_preset: default
 
 style:
-  font_face: "TH-Tshyn-P1"
+  font_face: Unicode Nushu
 #  To enlarge the font size, enable the settings below:
 #  font_point: 26
 #  layout:

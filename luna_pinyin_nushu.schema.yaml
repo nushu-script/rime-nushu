@@ -4,10 +4,11 @@
 schema:
   schema_id: luna_pinyin_nushu
   name: "朙月拼音·Unicode 女书"
-  version: "20180506 V1.0.01m1"
+  version: "2.0.1-m2"
   author:
-    - chromezh
+    - sgalal <ayaka@mail.shn.hk>
   dependencies:
+    - luna_pinyin
     - unicode_nushu_romanization
   description: |
     女書輸入法，支持 Unicode 編碼的 396 個女書字符。
@@ -56,24 +57,10 @@ engine:
     - simplifier@nushu
 
 speller:
-  alphabet: zyxwvutsrqponmlkjihgfedcba
-  delimiter: " '"
-  algebra:
-    - erase/^xx$/
-    - abbrev/^([a-z]).+$/$1/
-    - abbrev/^([zcs]h).+$/$1/
-    - derive/^([nl])ve$/$1ue/
-    - derive/^([jqxy])u/$1v/
-    - derive/([dtngkhrzcs])o(u|ng)$/$1o/
-    - derive/ong$/on/
+  __include: luna_pinyin.schema:/speller
 
 translator:
-  dictionary: luna_pinyin
-  prism: luna_pinyin_nushu
-  preedit_format:
-    - xform/([nl])v/$1ü/
-    - xform/([nl])ue/$1üe/
-    - xform/([jqxy])v/$1u/
+  __include: luna_pinyin.schema:/translator
 
 unicode_nushu_romanization:
   dictionary: unicode_nushu_romanization
@@ -108,7 +95,7 @@ recognizer:
     unicode_nushu_romanization: "`[a-z']*;?"  # press grave to enter nushu romanization input mode
 
 style:
-  font_face: "TH-Tshyn-P1"
+  font_face: Unicode Nushu
 #  To enlarge the font size, enable the settings below:
 #  font_point: 26
 #  layout:
