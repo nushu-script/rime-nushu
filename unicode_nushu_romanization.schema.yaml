@@ -5,7 +5,7 @@
 schema:
   schema_id: unicode_nushu_romanization
   name: "Unicode 女书拼音"
-  version: "2.0.1-m4"
+  version: "2.0.2-m5"
   author:
     - sgalal <ayaka@mail.shn.hk>
   description: |-
@@ -59,6 +59,7 @@ speller:
     - "abbrev/^([a-z]).+$/$1/"                   # 首字母簡拼
     - "abbrev/^(ng|nj).+$/$1/"                   # 双字母 ng 与 nj 簡拼
     - "derive/^([a-z]+)[1-5]{1,2}$/$1/"          # 兼容無聲調拼音
+    - xlit/12345/¹²³⁴⁵/
 
 translator:
   dictionary: unicode_nushu_romanization
