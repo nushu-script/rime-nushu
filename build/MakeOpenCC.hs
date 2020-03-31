@@ -19,9 +19,12 @@ handleLine m line =
   let [[v],_,ks,_] = splitOn "," line
    in foldl (insertOne v) m ks
 
+buildMap :: [String] -> Map Char String
+buildMap contents = foldl handleLine Map.empty contents
+
 main :: IO ()
 main = do
   (_:contents) <- fmap lines getContents
-  let xs = Map.assocs $ foldl handleLine Map.empty contents
+  let xs = Map.assocs $ buildMap contents
   for_ xs $ \(k,vs) -> do
     putStrLn $ k : '\t' : intersperse ' ' (nub vs)
