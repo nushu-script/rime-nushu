@@ -4,13 +4,13 @@
 
 ## Unicode
 
-[Unicode](http://www.unicode.org/)（统一码、万国码、单一码）是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。
+[Unicode](http://www.unicode.org/) 是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。
 
-Unicode 10.0 于 2017 年 6 月 20 日发布，其中加入了 396 个女书字符，编码区域为 U+1B170 - U+1B2FF。使得女书可以进行通用的计算机处理。
+Unicode 10.0 于 2017 年 6 月 20 日发布，其中加入了 396 个女书字符，编码区域为 U+1B170-U+1B2FF。使得女书可以进行通用的计算机处理。
 
 [http://www.unicode.org/charts/PDF/U1B170.pdf](http://www.unicode.org/charts/PDF/U1B170.pdf)
 
-![](demo/unicode_charts_nushu_screenshoot.png)
+![Unicode 中的女书](demo/unicode_charts_nushu_screenshoot.png)
 
 ## 中州韵输入法引擎（RIME）
 
@@ -28,10 +28,11 @@ RIME 在各平台的安装方法可以参考 [输入法安装方法](https://kah
 
 在本项目中，通过对 RIME 输入法中内置的 OpenCC 增加简体汉字到女书字符的转换（对应的文件为 `s2nushu.json` 与 `s2nushu.txt`），实现了输入普通话拼音，输出女书字符的效果。
 
-## 天珩全字库
+# Build
 
-[天珩全字库](http://cheonhyeong.com/Simplified/download.html) V2.1.0(TH-Tshyn) 是目前字符数量最全的字体支持包，其中汉字部分支持大约 12 万，主要设计为大陆风格，扩展 EF 主要为日本风格。另外本字库有 Unicode 10.0 以内的几乎所有字符，包括表情符号（黑白色）。
-
-天珩全字库中的字体 `TH-Tshyn-P1.ttf` 可以显示 Unicode 编码的女书字符。
-
-有关天珩全字库的问题，可以在 QQ 群 436064726 中询问。
+```sh
+$ sudo pacman -S haskell-split
+$ cd build
+$ wget https://nushuscript.org/unicode_nushu/data.csv
+$ ./MakeOpenCC.hs < data.csv > ../opencc/s2nushu.txt
+```

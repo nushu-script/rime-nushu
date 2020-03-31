@@ -4,13 +4,11 @@
 
 schema:
   schema_id: unicode_nushu_romanization
-  name: "Unicode 女书拼音"
-  version: "2.0.2-m5"
+  name: Unicode 女书拼音
+  version: "2.0.3-006"
   author:
     - sgalal <ayaka@mail.shn.hk>
-  description: |-
-    女书输入法，支持 Unicode 编码的 396 个女书字符。
-    使用女书拼音输入女书。
+  description: 使用江永方言拼音输入女书，支持 Unicode 编码的 396 个女书字符。
 
 switches:
   - name: ascii_mode

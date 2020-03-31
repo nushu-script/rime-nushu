@@ -1,29 +1,27 @@
+#!/usr/bin/env runhaskell
+
+{-# OPTIONS_GHC -Wall -Werror #-}
+
 -- Make s2nushu.txt for Nushu Input Method
--- Usage: stack runhaskell --package split --package multimap -- -Wall -Werror MakeOpenCC.hs < data.csv > s2nushu.txt
--- data.csv from https://nushuscript.org/unicode_nushu/data.csv
+-- Usage: See CONTRIBUTING.md
 
-import Data.Foldable (traverse_)
-import Data.List (intersperse)
+import Data.Foldable (for_)
+import Data.List (intersperse, nub)
 import Data.List.Split (splitOn)
-import Data.MultiMap (MultiMap)
-import qualified Data.MultiMap as MM (assocs, empty, insert)
-import System.IO
+import Data.Map.Strict (Map)
+import qualified Data.Map.Strict as Map
 
-insertOne :: Char -> MultiMap Char Char -> Char -> MultiMap Char Char
-insertOne ch m v = MM.insert v ch m
+insertOne :: Char -> Map Char String -> Char -> Map Char String
+insertOne v m k = Map.insertWith (++) k [v] m
 
-getMap :: MultiMap Char Char -> String -> MultiMap Char Char
-getMap m x = let [[colA],_,colC,_] = splitOn "," x in foldl (insertOne colA) m colC
-
-pp :: (Char, String) -> String
-pp (k,v) = k : '\t' : intersperse ' ' v
-
-makeOpenCC :: String -> IO ()
-makeOpenCC str =
- let ("女书字符,《字帖》序,对应汉字,江永方言代表发音":contents) = lines str
-  in traverse_ (putStrLn . pp) $ MM.assocs $ foldl getMap MM.empty contents
+handleLine :: Map Char String -> String -> Map Char String
+handleLine m line =
+  let [[v],_,ks,_] = splitOn "," line
+   in foldl (insertOne v) m ks
 
 main :: IO ()
 main = do
-  hSetEncoding stdin utf8_bom
-  makeOpenCC =<< getContents
+  (_:contents) <- fmap lines getContents
+  let xs = Map.assocs $ foldl handleLine Map.empty contents
+  for_ xs $ \(k,vs) -> do
+    putStrLn $ k : '\t' : intersperse ' ' (nub vs)
