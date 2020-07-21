@@ -3,13 +3,13 @@
 
 schema:
   schema_id: luna_pinyin_nushu
-  name: 朙月拼音・Unicode 女书
+  name: 朙月拼音・女书
   version: "2.0.2-003"
   author:
-    - sgalal <ayaka@mail.shn.hk>
+    - sgalal <sgalal.me@outlook.com>
   dependencies:
     - luna_pinyin
-    - nushu_romanization
+    - nushu
   description: |-
     使用江永方言拼音与普通话两种方式输入女书，支持 Unicode 编码的 396 个女书字符。
     按下 ` 键，可以使用女书拼音输入女书字符。
@@ -36,14 +36,14 @@ engine:
     segmentors:
       - ascii_segmentor
       - matcher
-      - affix_segmentor@nushu_romanization
+      - affix_segmentor@nushu
       - abc_segmentor
       - punct_segmentor
       - fallback_segmentor
     translators:
       - punct_translator
       - script_translator
-      - script_translator@nushu_romanization
+      - script_translator@nushu
     filters:
       - simplifier
       - uniquifier  # 此項不能與下一項顛倒，否則會將對應同一女書的不同漢字合併
@@ -55,13 +55,13 @@ speller:
 translator:
   __include: luna_pinyin.schema:/translator
 
-nushu_romanization:
-  dictionary: nushu_romanization
+nushu:
+  dictionary: nushu
   spelling_hints: 20
   prefix: "`"
   suffix: ";"
   tips: 『女书拼音』
-  tag: nushu_romanization
+  tag: nushu
 
 nushu:
   option_name: nushu_convert
@@ -81,11 +81,4 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    nushu_romanization: "^`[a-z']*;?"  # press grave to enter Nushu romanization input mode
-
-style:
-  font_face: Unicode Nushu
-#  To enlarge the font size, enable the settings below:
-#  font_point: 26
-#  layout:
-#    candidate_spacing: 8
+    nushu: "^`[a-z']*;?"  # press grave to enter Nushu romanization input mode

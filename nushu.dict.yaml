@@ -1,19 +1,19 @@
 # Rime dictionary
 # encoding: utf-8
 
-# Source of pronunciation：Unicode Character Database - NushuSources-11.0.0d1.txt
+# Source of pronunciation: Unicode Character Database - NushuSources-11.0.0d1.txt
 
 # Fixed mistakes:
 # U+1B2EC: tschiang21 should be tchiang21
 # U+1B2EB: tciant44 should be tciang33
 # U+1B201/U+1B202: mistakenly reversed
 
-# 与汉语拼音方案的对应关系：
+# 与《汉语拼音方案》的对应关系：
 # tc -> j，tch -> q，c -> x，ts -> z，tsh -> c，ph -> p，t -> d，th -> t，k -> g，kh -> k
 
 ---
-name: nushu_romanization
-version: "20180506 V1.1.04m1"
+name: nushu
+version: "20180506"
 sort: by_weight
 use_preset_vocabulary: false
 columns:
