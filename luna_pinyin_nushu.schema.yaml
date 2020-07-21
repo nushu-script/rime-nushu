@@ -1,10 +1,12 @@
 # Rime schema
 # encoding: utf-8
 
+__include: luna_pinyin_simp.schema:/
+
 schema:
   schema_id: luna_pinyin_nushu
   name: 朙月拼音・女书
-  version: "2.0.2-003"
+  version: "2020.07.21"
   author:
     - sgalal <sgalal.me@outlook.com>
   dependencies:
@@ -14,7 +16,7 @@ schema:
     使用江永方言拼音与普通话两种方式输入女书，支持 Unicode 编码的 396 个女书字符。
     按下 ` 键，可以使用女书拼音输入女书字符。
     按下 Ctrl+Shift+4 可以退出或再次进入女书输入模式。
-    本方案依赖「Unicode 女书拼音」方案。
+    本方案依赖「女书」输入方案。
 
 switches:
   - name: ascii_mode
@@ -22,8 +24,9 @@ switches:
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
-  - name: simplification
+  - name: zh_simp
     reset: 1
+    states: [ 漢字, 汉字 ]
   - name: nushu_convert
     reset: 1
     states: [ 汉字, 女书 ]
@@ -31,29 +34,31 @@ switches:
     states: [ 。，, ．， ]
 
 engine:
-  __include: luna_pinyin.schema:/engine
-  __patch:
-    segmentors:
-      - ascii_segmentor
-      - matcher
-      - affix_segmentor@nushu
-      - abc_segmentor
-      - punct_segmentor
-      - fallback_segmentor
-    translators:
-      - punct_translator
-      - script_translator
-      - script_translator@nushu
-    filters:
-      - simplifier
-      - uniquifier  # 此項不能與下一項顛倒，否則會將對應同一女書的不同漢字合併
-      - simplifier@nushu
-
-speller:
-  __include: luna_pinyin.schema:/speller
-
-translator:
-  __include: luna_pinyin.schema:/translator
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - affix_segmentor@nushu
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator@custom_phrase
+    - script_translator
+    - script_translator@nushu
+  filters:
+    - simplifier
+    - uniquifier  # 此项不能与下一项颠倒，否则会将对应同一女书的不同汉字合并
+    - simplifier@nushu_convert
 
 nushu:
   dictionary: nushu
@@ -63,14 +68,11 @@ nushu:
   tips: 『女书拼音』
   tag: nushu
 
-nushu:
+nushu_convert:
   option_name: nushu_convert
   opencc_config: s2nushu.json
-  tags: [ abc ]  # 設置對主翻譯器起作用
-  tips: all  # 簡化器打開的情況下，提示女書對應的漢字
-
-punctuator:
-  import_preset: default
+  tags: [ abc ]  # 设置对主翻译器起作用
+  tips: all  # 简化器打开时，提示女书对应的汉字
 
 key_binder:
   import_preset: default

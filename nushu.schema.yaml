@@ -5,7 +5,7 @@
 schema:
   schema_id: nushu
   name: 女书
-  version: "20200721"
+  version: "2020.07.21"
   author:
     - sgalal <sgalal.me@outlook.com>
   description: |-

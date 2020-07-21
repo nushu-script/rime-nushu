@@ -48,7 +48,7 @@
 curl -fsSL https://git.io/rime-install | bash -s -- nushu-script/rime-nushu custom:set:config=default,key=installed_from,value=nushu-script/rime-nushu custom:add:schema=nushu custom:add:schema=luna_pinyin_nushu
 ```
 
-其中可能弹出提示需要安装 git，要点击允许，否则无法下载女书输入方案。<br/>A prompt may appear if you have not installed git. Git is required for the code to function properly.
+其中可能弹出提示需要安装 git，要点击允许，否则无法下载女书输入方案。<br/>A prompt may appear if you have not installed git. git is required for the code to function properly.
 
 如果你不知道如何打开 terminal，可以按 <kbd>Ctrl</kbd> + <kbd>Enter</kbd> 打开 spotlight，然后搜索 terminal。<br/>If you do not know how to open the terminal, you can press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to open spotlight and search for it.
 

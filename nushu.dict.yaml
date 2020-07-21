@@ -13,7 +13,7 @@
 
 ---
 name: nushu
-version: "20180506"
+version: "2018.05.06"
 sort: by_weight
 use_preset_vocabulary: false
 columns:
