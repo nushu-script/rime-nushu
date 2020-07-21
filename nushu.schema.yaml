@@ -5,7 +5,7 @@
 schema:
   schema_id: nushu
   name: 女书
-  version: "2020.07.21"
+  version: "2020.07.22"
   author:
     - sgalal <sgalal.me@outlook.com>
   description: |-
@@ -64,17 +64,17 @@ translator:
   dictionary: nushu
   spelling_hints: 20
   comment_format:
-    - "xform/tc([aiueoyw])/j$1/"          # tc -> j
-    - "xform/tch([aiueoyw])/q$1/"         # tch -> q
-    - "xform/c([aiueoyw])/x$1/"           # c -> x
-    - "xform/ts([aiueoyw])/z$1/"          # ts -> z
-    - "xform/tsh([aiueoyw])/c$1/"         # tsh -> c
-    - "xform/p([aiueoyw])/b$1/"           # p -> b
-    - "xform/ph([aiueoyw])/p$1/"          # ph -> p
-    - "xform/t([aiueoyw])/d$1/"           # t -> d
-    - "xform/th([aiueoyw])/t$1/"          # th -> t
-    - "xform/k([aiueoyw])/g$1/"           # k -> g
-    - "xform/kh([aiueoyw])/k$1/"          # kh -> k
+    - "xform/(^| )tc([aiueoyw])/$1j$2/"          # tc -> j
+    - "xform/(^| )tch([aiueoyw])/$1q$2/"         # tch -> q
+    - "xform/(^| )c([aiueoyw])/$1x$2/"           # c -> x
+    - "xform/(^| )ts([aiueoyw])/$1z$2/"          # ts -> z
+    - "xform/(^| )tsh([aiueoyw])/$1c$2/"         # tsh -> c
+    - "xform/(^| )p([aiueoyw])/$1b$2/"           # p -> b
+    - "xform/(^| )ph([aiueoyw])/$1p$2/"          # ph -> p
+    - "xform/(^| )t([aiueoyw])/$1d$2/"           # t -> d
+    - "xform/(^| )th([aiueoyw])/$1t$2/"          # th -> t
+    - "xform/(^| )k([aiueoyw])/$1g$2/"           # k -> g
+    - "xform/(^| )kh([aiueoyw])/$1k$2/"          # kh -> k
 
 punctuator:
   import_preset: default

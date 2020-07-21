@@ -6,7 +6,7 @@ __include: luna_pinyin_simp.schema:/
 schema:
   schema_id: luna_pinyin_nushu
   name: 朙月拼音・女书
-  version: "2020.07.21"
+  version: "2020.07.22"
   author:
     - sgalal <sgalal.me@outlook.com>
   dependencies:
@@ -61,12 +61,12 @@ engine:
     - simplifier@nushu_convert
 
 nushu:
-  dictionary: nushu
-  spelling_hints: 20
-  prefix: "`"
-  suffix: ";"
-  tips: 『女书拼音』
-  tag: nushu
+  __include: nushu.schema:/translator
+  __patch:
+    prefix: "`"
+    suffix: ";"
+    tips: 『女书拼音』
+    tag: nushu
 
 nushu_convert:
   option_name: nushu_convert
