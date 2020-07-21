@@ -9,7 +9,7 @@ schema:
     - sgalal <ayaka@mail.shn.hk>
   dependencies:
     - luna_pinyin
-    - unicode_nushu_romanization
+    - nushu_romanization
   description: |-
     使用江永方言拼音与普通话两种方式输入女书，支持 Unicode 编码的 396 个女书字符。
     按下 ` 键，可以使用女书拼音输入女书字符。
@@ -36,14 +36,14 @@ engine:
     segmentors:
       - ascii_segmentor
       - matcher
-      - affix_segmentor@unicode_nushu_romanization
+      - affix_segmentor@nushu_romanization
       - abc_segmentor
       - punct_segmentor
       - fallback_segmentor
     translators:
       - punct_translator
       - script_translator
-      - script_translator@unicode_nushu_romanization
+      - script_translator@nushu_romanization
     filters:
       - simplifier
       - uniquifier  # 此項不能與下一項顛倒，否則會將對應同一女書的不同漢字合併
@@ -55,13 +55,13 @@ speller:
 translator:
   __include: luna_pinyin.schema:/translator
 
-unicode_nushu_romanization:
-  dictionary: unicode_nushu_romanization
+nushu_romanization:
+  dictionary: nushu_romanization
   spelling_hints: 20
   prefix: "`"
   suffix: ";"
   tips: 『女书拼音』
-  tag: unicode_nushu_romanization
+  tag: nushu_romanization
 
 nushu:
   option_name: nushu_convert
@@ -81,7 +81,7 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    unicode_nushu_romanization: "^`[a-z']*;?"  # press grave to enter Nushu romanization input mode
+    nushu_romanization: "^`[a-z']*;?"  # press grave to enter Nushu romanization input mode
 
 style:
   font_face: Unicode Nushu

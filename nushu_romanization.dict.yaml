@@ -12,7 +12,7 @@
 # tc -> j，tch -> q，c -> x，ts -> z，tsh -> c，ph -> p，t -> d，th -> t，k -> g，kh -> k
 
 ---
-name: unicode_nushu_romanization
+name: nushu_romanization
 version: "20180506 V1.1.04m1"
 sort: by_weight
 use_preset_vocabulary: false

@@ -1,23 +1,9 @@
-# Unicode 女书输入法
+# 女书输入法 Nushu Input Method
 
-**使用 Unicode 女书输入法，简便地输入 Unicode 编码的 396 个女书字符。**
+**使用女书输入法，简便地输入 Unicode 编码的 396 个女书字符。**
 
-![Unicode 女书输入法](https://nushuscript.org/rime-unicode_nushu/demo/weasel_unicode_nushu0.png)
+**Use the Nushu Input Method to easily input the 396 Nushu characters encoded in Unicode**
 
-![Unicode 女书输入法](https://nushuscript.org/rime-unicode_nushu/demo/weasel_unicode_nushu1.png)
+![使用江永方言拼音输入女书<br/>Demo of inputting Nushu by romanization of Jiangyong dialect](demo/weasel_nushu0.png)
 
-安装教程请参见：<https://nushuscript.org/rime-unicode_nushu/>
-
-# Unicode Nushu Input Method
-
-**Use the Unicode Nushu Input Method to easily input the 396 Nushu characters encoded in Unicode**
-
-Input Nushu by romanization of Jiangyong dialect:
-
-![Demo of inputting Nushu by romanization of Jiangyong dialect](https://nushuscript.org/rime-unicode_nushu/demo/weasel_unicode_nushu0.png)
-
-Input Nushu by romanization of Standard Chinese (pinyin):
-
-![Demo of inputting Nushu by romanization of Standard Chinese (pinyin)](https://nushuscript.org/rime-unicode_nushu/demo/weasel_unicode_nushu1.png)
-
-Installation guide: <https://nushuscript.org/rime-unicode_nushu/>
+![使用普通话拼音输入汉字对应的女书<br/>Demo of inputting Nushu by romanization of Putonghua (pinyin)](demo/weasel_nushu1.png)

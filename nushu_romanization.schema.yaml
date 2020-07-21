@@ -3,11 +3,11 @@
 # encoding: utf-8
 
 schema:
-  schema_id: unicode_nushu_romanization
+  schema_id: nushu_romanization
   name: Unicode 女书拼音
   version: "2.0.3-006"
   author:
-    - sgalal <ayaka@mail.shn.hk>
+    - sgalal <sgalal.me@outlook.com>
   description: 使用江永方言拼音输入女书，支持 Unicode 编码的 396 个女书字符。
 
 switches:
@@ -60,7 +60,7 @@ speller:
     - xlit/12345/¹²³⁴⁵/
 
 translator:
-  dictionary: unicode_nushu_romanization
+  dictionary: nushu_romanization
   spelling_hints: 20
   comment_format:
     - "xform/(^| )tc([aiueoyw])/$1j$2/"          # tc -> j
