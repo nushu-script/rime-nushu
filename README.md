@@ -18,9 +18,10 @@
 
 见本项目 [Wiki](https://github.com/nushu-script/rime-nushu/wiki)。<br/>See project [Wiki](https://github.com/nushu-script/rime-nushu/wiki).
 
-- [Windows 安装方法<br/>Windows Installation](https://github.com/nushu-script/rime-nushu/wiki/Windows-%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95-%7C-Windows-Installation)
-- [macOS 安装方法<br/>macOS Installation](https://github.com/nushu-script/rime-nushu/wiki/macOS-%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95-%7C-macOS-Installation)
-- [Arch Linux 安装方法<br/>Arch Linux Installation](https://github.com/nushu-script/rime-nushu/wiki/Arch-Linux-%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95-%7C-Arch-Linux-Installation)
+- [Windows 安装方法<br/>Installation on Windows](https://github.com/nushu-script/rime-nushu/wiki/Windows-%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95-%7C-Installation-on-Windows)
+- [macOS 安装方法<br/>Installation on macOS](https://github.com/nushu-script/rime-nushu/wiki/macOS-%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95-%7C-Installation-on-macOS)
+- [Arch Linux 安装方法<br/>Installation on Arch Linux](https://github.com/nushu-script/rime-nushu/wiki/Arch-Linux-%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95-%7C-Installation-on-Arch-Linux)
+- [安卓安装方法<br/>Installation on Android](https://github.com/nushu-script/rime-nushu/wiki/%E5%AE%89%E5%8D%93%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95-%7C-Installation-on-Android)
 
 ## 关于女书拼音的说明<br/>Notes on the Romanization of Nushu
 
